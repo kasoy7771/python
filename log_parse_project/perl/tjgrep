@@ -1,0 +1,40 @@
+#!/usr/bin/perl
+use strict;
+use Getopt::Std;
+my %opts;
+my $e;
+
+# Usage
+# cat /var/log/srv1cv8/rphost_*/* | tjgrep "\d\d:\d\d"
+# cat /var/log/srv1cv8/rphost_*/* | tjgrep -v "\d\d:\d\d"  #for invert
+# Надо дать права на исполнение файла
+# chmod +x tjgrep
+
+parse_args();
+my $selection = shift @ARGV;
+
+while (<>) 
+{   $e = process_event($e) if (/\d\d:\d\d\.\d+-\d+/) ;
+	$e .= $_;
+}   
+process_event($e);
+
+sub process_event($) {    
+    my ($event) = @_;
+    return unless $event;
+    if ($opts{v}) { 
+        print $event if ($event !~ /$selection/);
+    }
+    else {
+    	print $event if ($event =~ /$selection/);
+    }
+}
+
+sub parse_args {
+    getopts('vh',\%opts);
+    if ($opts{h}) {
+        print ("-h print this message\n");
+        print ("-v  Invert the sense of matching, to select non-matching lines. Like in grep.\n");
+        exit(0);
+    }
+}
