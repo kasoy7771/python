@@ -32,13 +32,54 @@
 '''
 
 import sys
+import pprint
 import logsparseLib
 
+
 def process_event(event):
-    pass
+    '''Пока что функция определяет для события начальную и конечную дату сессии
+    Смущает то, что оказывается номер сессии может быть не уникаьлным, но посмотрим'''
+
+    # Получаю номер сессии
+    SessionID = event.get_property('SessionID')
+
+    # Если в событии нет сессии, то выхожу
+    if not SessionID:
+
+        return
+
+    # Если сессия еще не встречалась, то заполню необходимые свойства
+    if SessionID not in sessions:
+        sessions[SessionID] = {'begin': event.datetime,
+                               'end': event.datetime}
+        return
+
+    # Если дата подходит, то меняем ее в словаре сессий
+    if event.datetime < sessions[SessionID]['begin']:
+        sessions[SessionID]['begin'] = event.datetime
+    if event.datetime > sessions[SessionID]['end']:
+        sessions[SessionID]['end'] = event.datetime
+
+
+def analyze():
+    '''Функция анализирует количество уникальных сессий,
+    понимает количество сессий,
+    для каждой сесси вычисляет время работы : дата последнего события - дата первого события'''
+    sum = 0
+    for session in sessions:
+        dur = sessions[session]['end'] - sessions[session]['begin']
+        sessions[session]['dur'] = dur.microseconds
+        sum += dur.microseconds
+
+    print sum
+    print len(sessions.keys())
+    pprint.pprint(sessions)
 
 if __name__ == '__main__':
+    # Объявляю глобальные переменные
     sessions = {}
+
+    # Получаю строковый генератор событий из библиотеки передав список параметров - глоб
     str_events = logsparseLib.read_events_from_files(sys.argv[1:], filter='t:applicationName=BackgroundJob')
     i=1
     for str_event in str_events:
@@ -46,5 +87,8 @@ if __name__ == '__main__':
         if not i % 10000:
             print i
         event = logsparseLib.Event(str_event)
+
         process_event(event)
         i+=1
+
+    analyze()

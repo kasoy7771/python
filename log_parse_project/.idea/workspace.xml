@@ -34,11 +34,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="analyze_background_sessions.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="analyze_background_sessions.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/analyze_background_sessions.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="341">
-              <caret line="43" column="0" selection-start-line="43" selection-start-column="0" selection-end-line="43" selection-end-column="0" />
+            <state relative-caret-position="356">
+              <caret line="60" column="0" selection-start-line="60" selection-start-column="0" selection-end-line="60" selection-end-column="0" />
               <folding>
                 <element signature="e#1015#1025#0" expanded="true" />
               </folding>
@@ -46,17 +46,17 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="logsparseLib.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="logsparseLib.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/logsparseLib.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="311">
-              <caret line="90" column="49" selection-start-line="90" selection-start-column="49" selection-end-line="90" selection-end-column="49" />
+            <state relative-caret-position="233">
+              <caret line="132" column="0" selection-start-line="132" selection-start-column="0" selection-end-line="132" selection-end-column="0" />
               <folding>
                 <element signature="e#224#233#0" expanded="true" />
                 <element signature="e#3341#4476#0" expanded="false" />
                 <element signature="e#7331#9922#0" expanded="false" />
-                <element signature="e#10412#10519#0" expanded="false" />
-                <element signature="e#10630#11309#0" expanded="false" />
+                <element signature="e#10561#10667#0" expanded="false" />
+                <element signature="e#10778#11457#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -128,15 +128,16 @@
         <option value="$PROJECT_DIR$/split_by_field.py" />
         <option value="$PROJECT_DIR$/temp.pl" />
         <option value="$PROJECT_DIR$/files/17012514.log" />
-        <option value="$PROJECT_DIR$/analyze_background_sessions.py" />
         <option value="$PROJECT_DIR$/logsparseLib.py" />
+        <option value="$PROJECT_DIR$/analyze_background_sessions.py" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
+    <option name="x" value="1440" />
     <option name="y" value="22" />
-    <option name="width" value="1440" />
-    <option name="height" value="874" />
+    <option name="width" value="1920" />
+    <option name="height" value="1054" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
     <OptionsSetting value="true" id="Add" />
@@ -405,10 +406,10 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="22" width="1440" height="874" extended-state="6" />
-    <editor active="true" />
+    <frame x="1440" y="22" width="1920" height="1054" extended-state="6" />
+    <editor active="false" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.1125" sideWeight="0.61710036" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.11666667" sideWeight="0.61710036" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32978722" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33167702" sideWeight="0.50277776" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32978722" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -417,7 +418,7 @@
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.15" sideWeight="0.38289964" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.28447205" sideWeight="0.49722221" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2324873" sideWeight="0.49722221" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -462,16 +463,6 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="python-line">
           <url>file://$PROJECT_DIR$/logsparseLib.py</url>
-          <line>302</line>
-          <option name="timeStamp" value="72" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="python-line">
-          <url>file://$PROJECT_DIR$/logsparseLib.py</url>
-          <line>299</line>
-          <option name="timeStamp" value="75" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="python-line">
-          <url>file://$PROJECT_DIR$/logsparseLib.py</url>
           <line>210</line>
           <option name="timeStamp" value="76" />
         </line-breakpoint>
@@ -481,14 +472,14 @@
           <option name="timeStamp" value="95" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="python-line">
-          <url>file://$PROJECT_DIR$/logsparseLib.py</url>
-          <line>155</line>
-          <option name="timeStamp" value="98" />
+          <url>file://$PROJECT_DIR$/analyze_background_sessions.py</url>
+          <line>74</line>
+          <option name="timeStamp" value="106" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="python-line">
-          <url>file://$PROJECT_DIR$/logsparseLib.py</url>
-          <line>141</line>
-          <option name="timeStamp" value="100" />
+          <url>file://$PROJECT_DIR$/analyze_background_sessions.py</url>
+          <line>57</line>
+          <option name="timeStamp" value="107" />
         </line-breakpoint>
       </breakpoints>
       <breakpoints-dialog>
@@ -501,11 +492,15 @@
           </properties>
         </breakpoint>
       </default-breakpoints>
-      <option name="time" value="103" />
+      <option name="time" value="108" />
     </breakpoint-manager>
     <watches-manager>
       <configuration name="PythonConfigurationType">
         <watch expression="re.split('\D+', line, 1)" language="Python" />
+        <watch expression="sessions" language="Python" />
+        <watch expression="session['end']" language="Python" />
+        <watch expression="sessions[session]['end']" language="Python" />
+        <watch expression="len(sessions.keys())" language="Python" />
       </configuration>
     </watches-manager>
   </component>
@@ -536,8 +531,8 @@
             <element signature="e#224#233#0" expanded="true" />
             <element signature="e#3341#4476#0" expanded="false" />
             <element signature="e#7331#9922#0" expanded="false" />
-            <element signature="e#10412#10519#0" expanded="false" />
-            <element signature="e#10630#11309#0" expanded="false" />
+            <element signature="e#10561#10667#0" expanded="false" />
+            <element signature="e#10778#11457#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -608,8 +603,8 @@
             <element signature="e#224#233#0" expanded="true" />
             <element signature="e#3341#4476#0" expanded="false" />
             <element signature="e#7331#9922#0" expanded="false" />
-            <element signature="e#10412#10519#0" expanded="false" />
-            <element signature="e#10630#11309#0" expanded="false" />
+            <element signature="e#10561#10667#0" expanded="false" />
+            <element signature="e#10778#11457#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -680,8 +675,8 @@
             <element signature="e#224#233#0" expanded="true" />
             <element signature="e#3341#4476#0" expanded="false" />
             <element signature="e#7331#9922#0" expanded="false" />
-            <element signature="e#10412#10519#0" expanded="false" />
-            <element signature="e#10630#11309#0" expanded="false" />
+            <element signature="e#10561#10667#0" expanded="false" />
+            <element signature="e#10778#11457#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -765,26 +760,26 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/analyze_background_sessions.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="341">
-          <caret line="43" column="0" selection-start-line="43" selection-start-column="0" selection-end-line="43" selection-end-column="0" />
-          <folding>
-            <element signature="e#1015#1025#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/logsparseLib.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="311">
-          <caret line="90" column="49" selection-start-line="90" selection-start-column="49" selection-end-line="90" selection-end-column="49" />
+        <state relative-caret-position="233">
+          <caret line="132" column="0" selection-start-line="132" selection-start-column="0" selection-end-line="132" selection-end-column="0" />
           <folding>
             <element signature="e#224#233#0" expanded="true" />
             <element signature="e#3341#4476#0" expanded="false" />
             <element signature="e#7331#9922#0" expanded="false" />
-            <element signature="e#10412#10519#0" expanded="false" />
-            <element signature="e#10630#11309#0" expanded="false" />
+            <element signature="e#10561#10667#0" expanded="false" />
+            <element signature="e#10778#11457#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/analyze_background_sessions.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="356">
+          <caret line="60" column="0" selection-start-line="60" selection-start-column="0" selection-end-line="60" selection-end-column="0" />
+          <folding>
+            <element signature="e#1015#1025#0" expanded="true" />
           </folding>
         </state>
       </provider>

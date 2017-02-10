@@ -293,7 +293,6 @@ class Event(object):
 
             self.properties[property] = value
 
-
     def def_date(self):
         #time.struct_time(tm_year=2017, tm_mon=2, tm_mday=2, tm_hour=21, tm_min=52, tm_sec=20, tm_wday=3, tm_yday=33,
         #                 tm_isdst=0)
@@ -302,12 +301,17 @@ class Event(object):
                               int(self.date[14:]))
         pass
 
-
     def print_event(self):
         if self.str_event:
             print(self.str_event)
         else:
             log('Event is not defiened')
+
+    def get_property(self, name):
+        if name in self.properties:
+            return self.properties[name]
+        else:
+            return None
 
 
 '''
