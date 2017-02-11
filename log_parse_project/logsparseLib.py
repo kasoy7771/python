@@ -40,7 +40,7 @@ def steam_from_globs(globs):
             # Из имени файла получаем дату ТЖ
             file_date = basename[:8]
             fd = open(file, 'rb')
-            for line in fd.readlines():
+            for line in fd.xreadlines():
                 yield (line, file_date)
             fd.close()
 
@@ -71,7 +71,7 @@ def read_events_from_files(globs, filter=''):
 
             fd = open(file, 'rb')
             # Проходим по каждой строке из потока, чтобы сформировать из них цельные события
-            for line in fd.readlines():
+            for line in fd.xreadlines():
 
                 # Если совпали с регуляркой, то собыите закончилось, можно отдавать
                 if new_line_regex.search(line[:30]):
@@ -101,31 +101,55 @@ def read_events_from_files(globs, filter=''):
 
 def read_events_from_steam(stream):
     '''Функция создает генератор для возвращения событий технологического журнала в текстовом виде.
+
     На вход подается файловый дескриптор из которого можно читать'''
     new_line_regex = re.compile(r'\d\d:\d\d\.\d{6}-\d+,')
+
     first = True
     event = ''
-    while 1:
+
+    for line in stream.xreadlines():
         try:
-            line = stream.readline()
             # Если мы совпали с регуляркой, или закочнился вывод, то строки события закончились, можно отдавать
             if not line or new_line_regex.search(line[:30]):
+
                 # Особый случай для первой строки, она не является разделителем событий, надо пропустить передачу события
                 if first:
                     first = False
                     event += line
                     continue
-                yield(event)
-                # Обнуляем событие, чтобы начаь следующее
+
+                # Отправляем событие вверх по стеку
+                yield (event)
+                # Обнуляем событие, чтобы начать следующее
                 event = ''
-            # Прибавляем строку, чтобы софрмировать цельное событие
+            # Если с регуляркой не совпали, значит это продолжение начавшегося события
             event += line
-        # Прерывамся, если это прерывание с ком. строки
         except KeyboardInterrupt:
             break
-        # Прерываемся, если вывод закончился
-        if not line:
-            break
+
+    # Старый работающий вариант
+    # while 1:
+    #     try:
+    #         line = stream.readline()
+    #         # Если мы совпали с регуляркой, или закочнился вывод, то строки события закончились, можно отдавать
+    #         if not line or new_line_regex.search(line[:30]):
+    #             # Особый случай для первой строки, она не является разделителем событий, надо пропустить передачу события
+    #             if first:
+    #                 first = False
+    #                 event += line
+    #                 continue
+    #             yield(event)
+    #             # Обнуляем событие, чтобы начать следующее
+    #             event = ''
+    #         # Прибавляем строку, чтобы софрмировать цельное событие
+    #         event += line
+    #     # Прерывамся, если это прерывание с ком. строки
+    #     except KeyboardInterrupt:
+    #         break
+    #     # Прерываемся, если вывод закончился
+    #     if not line:
+    #         break
 
 
 class Event(object):
@@ -155,6 +179,7 @@ class Event(object):
         # Определяем длительность, тип, уровень вложенности
         self.dur, self.type, self.nesting_level, other = other.split(',', 3)
         self.dur = int(self.dur)
+        self.dur_sec = float(self.dur)/1000000
 
         # while True:
         #     if other == '\r\n' or not other:
@@ -318,8 +343,9 @@ class Event(object):
 Служебные процедуры и функции
 '''
 
+
 def log(message, params=None, log_type='always', add_time=True):
-    '''Функция логгирует свойства в зависимости от переданных params,
+    """Функция логгирует свойства в зависимости от переданных params,
     которые задаются в скрипт.
     Для корретной работы params должен содержать 2 атрибута
     --verbose
@@ -328,7 +354,7 @@ def log(message, params=None, log_type='always', add_time=True):
     - 'always'
     - 'debug'
     - 'verbose'
-    - 'debug_verbose' '''
+    - 'debug_verbose' """
 
     if add_time:
         message = time.ctime() + ' ' + message
@@ -343,6 +369,32 @@ def log(message, params=None, log_type='always', add_time=True):
         print(message)
 
 
+def define_dur_count_dict(dir_count_dict, event):
+    """
+    Функция предназначается для определения экземпряров словаря для подсчета
+    количества и суммарной длительности событий определенного вида.
+    Фунеция принимает на вход словарь и экземпляр класса event.
+    Если в словаре нет ключа event.type, то функция добавляет в словарь этот ключ
+    со значением
+    {'dur': event.dur,
+     'count': 1}
+    """
+    if event.type not in dir_count_dict.keys():
+        dir_count_dict[event.type] = {'dur': event.dur_sec,
+                                      'count': 1}
+    else:
+        update_dur_count_dict(dir_count_dict, event)
+
+
+def update_dur_count_dict(dir_count_dict, event):
+    """
+    Функция предназначается для суммирования экземпряров словаря для подсчета
+    количества и суммарной длительности событий определенного вида.
+    Фунеция принимает на вход словарь и экземпляр класса event.
+    Функция добавляет к значениям словаря dir_count_dict[] занчения из event
+    """
+    dir_count_dict[event.type]['dur'] += event.dur_sec
+    dir_count_dict[event.type]['count'] += 1
 
 
 

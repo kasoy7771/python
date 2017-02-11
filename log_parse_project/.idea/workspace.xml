@@ -34,11 +34,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="analyze_background_sessions.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="analyze_background_sessions.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/analyze_background_sessions.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="356">
-              <caret line="60" column="0" selection-start-line="60" selection-start-column="0" selection-end-line="60" selection-end-column="0" />
+            <state relative-caret-position="-224">
+              <caret line="51" column="33" selection-start-line="51" selection-start-column="33" selection-end-line="51" selection-end-column="33" />
               <folding>
                 <element signature="e#1015#1025#0" expanded="true" />
               </folding>
@@ -46,17 +46,24 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="logsparseLib.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="logsparseLib.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/logsparseLib.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="233">
-              <caret line="132" column="0" selection-start-line="132" selection-start-column="0" selection-end-line="132" selection-end-column="0" />
+            <state relative-caret-position="433">
+              <caret line="181" column="23" selection-start-line="181" selection-start-column="23" selection-end-line="181" selection-end-column="46" />
               <folding>
                 <element signature="e#224#233#0" expanded="true" />
-                <element signature="e#3341#4476#0" expanded="false" />
-                <element signature="e#7331#9922#0" expanded="false" />
-                <element signature="e#10561#10667#0" expanded="false" />
-                <element signature="e#10778#11457#0" expanded="false" />
+                <element signature="e#712#1330#0" expanded="false" />
+                <element signature="e#1391#3300#0" expanded="false" />
+                <element signature="e#3343#5360#0" expanded="false" />
+                <element signature="e#5427#5473#0" expanded="false" />
+                <element signature="e#6840#6853#0" expanded="false" />
+                <element signature="e#7799#7821#0" expanded="false" />
+                <element signature="e#8262#10853#0" expanded="false" />
+                <element signature="e#10887#11304#0" expanded="false" />
+                <element signature="e#11341#11448#0" expanded="false" />
+                <element signature="e#11492#11598#0" expanded="false" />
+                <element signature="e#11710#12383#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -75,7 +82,7 @@
       <file leaf-file-name="17012513.log" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/files/17012513.log">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="825">
+            <state relative-caret-position="600">
               <caret line="55" column="0" selection-start-line="55" selection-start-column="0" selection-end-line="67" selection-end-column="182" />
               <folding />
             </state>
@@ -85,7 +92,7 @@
       <file leaf-file-name="temp.pl" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/temp.pl">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1500">
+            <state relative-caret-position="1700">
               <caret line="100" column="25" selection-start-line="100" selection-start-column="25" selection-end-line="100" selection-end-column="25" />
               <folding />
             </state>
@@ -95,7 +102,7 @@
       <file leaf-file-name="tjgrep" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/perl/tjgrep">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="240">
+            <state relative-caret-position="272">
               <caret line="16" column="49" selection-start-line="16" selection-start-column="49" selection-end-line="16" selection-end-column="49" />
               <folding />
             </state>
@@ -105,7 +112,7 @@
       <file leaf-file-name="split_by_field.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/split_by_field.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1485">
+            <state relative-caret-position="673">
               <caret line="103" column="0" selection-start-line="103" selection-start-column="0" selection-end-line="103" selection-end-column="0" />
               <folding />
             </state>
@@ -128,16 +135,16 @@
         <option value="$PROJECT_DIR$/split_by_field.py" />
         <option value="$PROJECT_DIR$/temp.pl" />
         <option value="$PROJECT_DIR$/files/17012514.log" />
-        <option value="$PROJECT_DIR$/logsparseLib.py" />
         <option value="$PROJECT_DIR$/analyze_background_sessions.py" />
+        <option value="$PROJECT_DIR$/logsparseLib.py" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="1440" />
-    <option name="y" value="22" />
-    <option name="width" value="1920" />
-    <option name="height" value="1054" />
+    <option name="x" value="54" />
+    <option name="y" value="-8" />
+    <option name="width" value="1634" />
+    <option name="height" value="1066" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
     <OptionsSetting value="true" id="Add" />
@@ -164,7 +171,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
@@ -214,6 +220,7 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -365,14 +372,14 @@
       <envs>
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
-      <option name="SDK_HOME" value="/System/Library/Frameworks/Python.framework/Versions/2.5/bin/python2.5" />
+      <option name="SDK_HOME" value="" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="IS_MODULE_SDK" value="false" />
+      <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <module name="log_parse_deb" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/analyze_background_sessions.py" />
-      <option name="PARAMETERS" value="$PROJECT_DIR$/../17012515.log" />
+      <option name="PARAMETERS" value="c:\git\git_hub\python\log_parse_project\files\17012513.log" />
       <option name="SHOW_COMMAND_LINE" value="true" />
       <method />
     </configuration>
@@ -406,10 +413,10 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="1440" y="22" width="1920" height="1054" extended-state="6" />
+    <frame x="54" y="-8" width="1634" height="1066" extended-state="6" />
     <editor active="false" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.11666667" sideWeight="0.61710036" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.11619283" sideWeight="0.61710036" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32978722" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33167702" sideWeight="0.50277776" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32978722" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -418,7 +425,7 @@
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.15" sideWeight="0.38289964" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2324873" sideWeight="0.49722221" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.30825496" sideWeight="0.49722221" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -463,23 +470,13 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="python-line">
           <url>file://$PROJECT_DIR$/logsparseLib.py</url>
-          <line>210</line>
+          <line>235</line>
           <option name="timeStamp" value="76" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="python-line">
           <url>file://$PROJECT_DIR$/logsparseLib.py</url>
-          <line>173</line>
+          <line>198</line>
           <option name="timeStamp" value="95" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="python-line">
-          <url>file://$PROJECT_DIR$/analyze_background_sessions.py</url>
-          <line>74</line>
-          <option name="timeStamp" value="106" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="python-line">
-          <url>file://$PROJECT_DIR$/analyze_background_sessions.py</url>
-          <line>57</line>
-          <option name="timeStamp" value="107" />
         </line-breakpoint>
       </breakpoints>
       <breakpoints-dialog>
@@ -492,19 +489,99 @@
           </properties>
         </breakpoint>
       </default-breakpoints>
-      <option name="time" value="108" />
+      <option name="time" value="118" />
     </breakpoint-manager>
     <watches-manager>
       <configuration name="PythonConfigurationType">
-        <watch expression="re.split('\D+', line, 1)" language="Python" />
-        <watch expression="sessions" language="Python" />
-        <watch expression="session['end']" language="Python" />
-        <watch expression="sessions[session]['end']" language="Python" />
-        <watch expression="len(sessions.keys())" language="Python" />
+        <watch expression="context.splitlines()" language="Python" />
+        <watch expression="context[1:-1]" language="Python" />
+        <watch expression="sessions[session]" language="Python" />
+        <watch expression="sorted(sessions.keys(), key=lambda session: sessions[session]['dur'])" language="Python" />
+        <watch expression="sessions.keys()" language="Python" />
+        <watch expression="float(self.dur)/1000000" language="Python" />
       </configuration>
     </watches-manager>
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/setup.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/analyze_background_sessions.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="e#1015#1025#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/logsparseLib.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1802">
+          <caret line="132" column="0" selection-start-line="132" selection-start-column="0" selection-end-line="132" selection-end-column="0" />
+          <folding>
+            <element signature="e#224#233#0" expanded="true" />
+            <element signature="e#712#1330#0" expanded="false" />
+            <element signature="e#1391#3300#0" expanded="false" />
+            <element signature="e#3343#5360#0" expanded="false" />
+            <element signature="e#5427#5473#0" expanded="false" />
+            <element signature="e#6840#6853#0" expanded="false" />
+            <element signature="e#7799#7821#0" expanded="false" />
+            <element signature="e#8262#10853#0" expanded="false" />
+            <element signature="e#10887#11304#0" expanded="false" />
+            <element signature="e#11341#11448#0" expanded="false" />
+            <element signature="e#11492#11598#0" expanded="false" />
+            <element signature="e#11710#12383#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/files/17012514.log">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="11" column="100" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="100" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/files/17012513.log">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="935">
+          <caret line="55" column="0" selection-start-line="55" selection-start-column="0" selection-end-line="67" selection-end-column="182" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/temp.pl">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1700">
+          <caret line="100" column="25" selection-start-line="100" selection-start-column="25" selection-end-line="100" selection-end-column="25" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/perl/tjgrep">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="16" column="49" selection-start-line="16" selection-start-column="49" selection-end-line="16" selection-end-column="49" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/split_by_field.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1683">
+          <caret line="103" column="0" selection-start-line="103" selection-start-column="0" selection-end-line="103" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/setup.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -529,10 +606,17 @@
           <caret line="180" column="8" selection-start-line="180" selection-start-column="8" selection-end-line="180" selection-end-column="8" />
           <folding>
             <element signature="e#224#233#0" expanded="true" />
-            <element signature="e#3341#4476#0" expanded="false" />
-            <element signature="e#7331#9922#0" expanded="false" />
-            <element signature="e#10561#10667#0" expanded="false" />
-            <element signature="e#10778#11457#0" expanded="false" />
+            <element signature="e#712#1330#0" expanded="false" />
+            <element signature="e#1391#3300#0" expanded="false" />
+            <element signature="e#3343#5360#0" expanded="false" />
+            <element signature="e#5427#5473#0" expanded="false" />
+            <element signature="e#6840#6853#0" expanded="false" />
+            <element signature="e#7799#7821#0" expanded="false" />
+            <element signature="e#8262#10853#0" expanded="false" />
+            <element signature="e#10887#11304#0" expanded="false" />
+            <element signature="e#11341#11448#0" expanded="false" />
+            <element signature="e#11492#11598#0" expanded="false" />
+            <element signature="e#11710#12383#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -601,10 +685,17 @@
           <caret line="180" column="8" selection-start-line="180" selection-start-column="8" selection-end-line="180" selection-end-column="8" />
           <folding>
             <element signature="e#224#233#0" expanded="true" />
-            <element signature="e#3341#4476#0" expanded="false" />
-            <element signature="e#7331#9922#0" expanded="false" />
-            <element signature="e#10561#10667#0" expanded="false" />
-            <element signature="e#10778#11457#0" expanded="false" />
+            <element signature="e#712#1330#0" expanded="false" />
+            <element signature="e#1391#3300#0" expanded="false" />
+            <element signature="e#3343#5360#0" expanded="false" />
+            <element signature="e#5427#5473#0" expanded="false" />
+            <element signature="e#6840#6853#0" expanded="false" />
+            <element signature="e#7799#7821#0" expanded="false" />
+            <element signature="e#8262#10853#0" expanded="false" />
+            <element signature="e#10887#11304#0" expanded="false" />
+            <element signature="e#11341#11448#0" expanded="false" />
+            <element signature="e#11492#11598#0" expanded="false" />
+            <element signature="e#11710#12383#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -673,10 +764,17 @@
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="e#224#233#0" expanded="true" />
-            <element signature="e#3341#4476#0" expanded="false" />
-            <element signature="e#7331#9922#0" expanded="false" />
-            <element signature="e#10561#10667#0" expanded="false" />
-            <element signature="e#10778#11457#0" expanded="false" />
+            <element signature="e#712#1330#0" expanded="false" />
+            <element signature="e#1391#3300#0" expanded="false" />
+            <element signature="e#3343#5360#0" expanded="false" />
+            <element signature="e#5427#5473#0" expanded="false" />
+            <element signature="e#6840#6853#0" expanded="false" />
+            <element signature="e#7799#7821#0" expanded="false" />
+            <element signature="e#8262#10853#0" expanded="false" />
+            <element signature="e#10887#11304#0" expanded="false" />
+            <element signature="e#11341#11448#0" expanded="false" />
+            <element signature="e#11492#11598#0" expanded="false" />
+            <element signature="e#11710#12383#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -700,7 +798,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/perl/tjgrep">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
+        <state relative-caret-position="272">
           <caret line="16" column="49" selection-start-line="16" selection-start-column="49" selection-end-line="16" selection-end-column="49" />
           <folding />
         </state>
@@ -708,7 +806,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/temp.pl">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1500">
+        <state relative-caret-position="1700">
           <caret line="100" column="25" selection-start-line="100" selection-start-column="25" selection-end-line="100" selection-end-column="25" />
           <folding />
         </state>
@@ -730,7 +828,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/split_by_field.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1485">
+        <state relative-caret-position="673">
           <caret line="103" column="0" selection-start-line="103" selection-start-column="0" selection-end-line="103" selection-end-column="0" />
           <folding />
         </state>
@@ -738,16 +836,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/files/17012513.log">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="825">
+        <state relative-caret-position="600">
           <caret line="55" column="0" selection-start-line="55" selection-start-column="0" selection-end-line="67" selection-end-column="182" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/setup.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -760,26 +850,41 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/logsparseLib.py">
+    <entry file="file://$PROJECT_DIR$/setup.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="233">
-          <caret line="132" column="0" selection-start-line="132" selection-start-column="0" selection-end-line="132" selection-end-column="0" />
-          <folding>
-            <element signature="e#224#233#0" expanded="true" />
-            <element signature="e#3341#4476#0" expanded="false" />
-            <element signature="e#7331#9922#0" expanded="false" />
-            <element signature="e#10561#10667#0" expanded="false" />
-            <element signature="e#10778#11457#0" expanded="false" />
-          </folding>
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/analyze_background_sessions.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="356">
-          <caret line="60" column="0" selection-start-line="60" selection-start-column="0" selection-end-line="60" selection-end-column="0" />
+        <state relative-caret-position="-224">
+          <caret line="51" column="33" selection-start-line="51" selection-start-column="33" selection-end-line="51" selection-end-column="33" />
           <folding>
             <element signature="e#1015#1025#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/logsparseLib.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="433">
+          <caret line="181" column="23" selection-start-line="181" selection-start-column="23" selection-end-line="181" selection-end-column="46" />
+          <folding>
+            <element signature="e#224#233#0" expanded="true" />
+            <element signature="e#712#1330#0" expanded="false" />
+            <element signature="e#1391#3300#0" expanded="false" />
+            <element signature="e#3343#5360#0" expanded="false" />
+            <element signature="e#5427#5473#0" expanded="false" />
+            <element signature="e#6840#6853#0" expanded="false" />
+            <element signature="e#7799#7821#0" expanded="false" />
+            <element signature="e#8262#10853#0" expanded="false" />
+            <element signature="e#10887#11304#0" expanded="false" />
+            <element signature="e#11341#11448#0" expanded="false" />
+            <element signature="e#11492#11598#0" expanded="false" />
+            <element signature="e#11710#12383#0" expanded="false" />
           </folding>
         </state>
       </provider>
