@@ -34,7 +34,26 @@
 import sys
 import pprint
 import time
+sys.path.append('/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/')
+import json
+import argparse
 import logsparseLib
+
+
+def parse_params():
+    parser = argparse.ArgumentParser()
+    parser.add_argument('-j', '--json_format', action='store_true',
+                        help='output in json format', default=False)
+    parser.add_argument('-a', '--all_contexts', action='store_true',
+                        help='output all context, by default only 10 top', default=False)
+    parser.add_argument('-d', '--debug', action='store_true',
+                        help='debug mode', default=False)
+    parser.add_argument('-v', '--verbose', action='store_true',
+                        help='verbose mode', default=False)
+    parser.add_argument('globs', type=str,
+                        help='verbose mode', nargs='*')
+    loc_params = parser.parse_args()
+    return loc_params
 
 
 def process_event(event):
@@ -93,14 +112,40 @@ def analyze():
     """Функция анализирует количество уникальных сессий,
     понимает количество сессий,
     для каждой сесси вычисляет время работы : дата последнего события - дата первого события"""
-    tsum = 0
+    total_dur = 0
     for session in sessions:
         dur = sessions[session]['end'] - sessions[session]['begin']
         dur_sec = dur.total_seconds()
         sessions[session]['dur'] = dur_sec
-        tsum += dur_sec
+        sessions[session]['begin'] = sessions[session]['begin'].__str__()
+        sessions[session]['end'] = sessions[session]['end'].__str__()
+        total_dur += dur_sec
 
-    print tsum
+    # Формируем выходной josn с результатами анализа
+    if params.json_format:
+        result = {}
+        result['total_dur'] = total_dur
+        result['count'] = len(sessions.keys())
+        result['sessions'] = {}
+
+        if params.all_contexts:
+            result['sessions'] = sessions
+            print json.dumps(result)
+            return
+
+        for session in sessions.keys():
+            result['sessions'][session] = sessions[session]
+            sessions[session]['begin'].__str__()
+            context_lines = result['sessions'][session]['context_lines'].copy()
+            result['sessions'][session]['context_lines'] = {}
+            for line in sorted(context_lines .keys(), key=lambda line: context_lines [line], reverse=True)[:11]:
+                result['sessions'][session]['context_lines'][line] = context_lines[line]
+        print json.dumps(result)
+        return
+
+
+    # Предыдущий вывод
+    print total_dur
     print len(sessions.keys())
     # pprint.pprint(sessions)
     for session in sorted(sessions.keys(), key=lambda session: sessions[session]['dur'], reverse=True):
@@ -114,6 +159,9 @@ def analyze():
     pprint.pprint(types)
 
 if __name__ == '__main__':
+
+    params = parse_params()
+
     begin = time.time()
 
     # Объявляю глобальные переменные
@@ -121,7 +169,7 @@ if __name__ == '__main__':
     types = {}
 
     # Получаю строковый генератор событий из библиотеки передав список параметров - глоб
-    str_events = logsparseLib.read_events_from_files(sys.argv[1:], filter='t:applicationName=BackgroundJob')
+    str_events = logsparseLib.read_events_from_files(params.globs, filter='t:applicationName=BackgroundJob')
     i = 1
     for str_event in str_events:
         # print(str_event+'\n')
@@ -134,4 +182,4 @@ if __name__ == '__main__':
 
     analyze()
 
-    print(time.time() - begin)
+    logsparseLib.log(str(time.time() - begin), params=params, log_type='verbose')
