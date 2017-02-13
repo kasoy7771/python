@@ -19,14 +19,32 @@
 
 import sys
 import os
+import json
+
+
+def define_context_sign():
+    """Определяем список строк-признаков, по которым однозначно можно определить чем занималось фоновое задание"""
+    context_signs = (
+      "ВыполнитьЗаданиеОчереди", #  Работа воркеров очереди заданий
+      "РегистрСведений.ЗадачиБухгалтера.МодульМенеджера", # Фоновое задание обновление начального экрана в БП для руководителя
+      "Обработка.ГрупповоеПерепроведениеДокументов.МодульМенеджера", # Групповое перепроведение, в представлении не нуждается
+      "РегламентированнаяОтчетность.ВыполнитьПроверку", # Работа с регламентированной отчетностью
+     )
+    for sign in context_signs:
+        context_result[sign] = {}
+
 
 if __name__ == '__main__':
+    context_result = {}
+    context_signs = define_context_sign()
+
     fd = open(sys.argv[1], 'rb')
     main_str = fd.read()
-    sessions = main_str.split(('-'*50+os.sep)*2)
+    sessions = json.loads(main_str)
     for session in sessions:
-        if session:
-            print session
+        for line in sessions[session]['context_lines']:
+            for sign in context_signs:
+                if 
     pass
 
 
