@@ -50,8 +50,9 @@ def parse_params():
                         help='debug mode', default=False)
     parser.add_argument('-v', '--verbose', action='store_true',
                         help='verbose mode', default=False)
-    parser.add_argument('globs', type=str,
-                        help='verbose mode', nargs='*')
+    parser.add_argument('-o', '--out_file', type=argparse.FileType('w'),
+                        help='output file', default=sys.stdout)
+    parser.add_argument('globs', type=str, nargs='*')
     loc_params = parser.parse_args()
     return loc_params
 
@@ -121,7 +122,7 @@ def analyze():
         sessions[session]['end'] = sessions[session]['end'].__str__()
         total_dur += dur_sec
 
-    # Формируем выходной josn с результатами анализа
+    # Формируем выходной json с результатами анализа
     if params.json_format:
         result = {}
         result['total_dur'] = total_dur
@@ -130,7 +131,7 @@ def analyze():
 
         if params.all_contexts:
             result['sessions'] = sessions
-            print json.dumps(result)
+            json.dump(result, open(params.out_file, 'wb'))
             return
 
         for session in sessions.keys():
@@ -140,7 +141,7 @@ def analyze():
             result['sessions'][session]['context_lines'] = {}
             for line in sorted(context_lines .keys(), key=lambda line: context_lines [line], reverse=True)[:11]:
                 result['sessions'][session]['context_lines'][line] = context_lines[line]
-        print json.dumps(result)
+        json.dump(result, params.out_file)
         return
 
 
@@ -182,4 +183,4 @@ if __name__ == '__main__':
 
     analyze()
 
-    logsparseLib.log(str(time.time() - begin), params=params, log_type='verbose')
+    logsparseLib.log(str(time.time() - begin), params=params)

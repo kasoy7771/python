@@ -19,32 +19,82 @@
 
 import sys
 import os
+import pprint
 import json
 
 
 def define_context_sign():
     """Определяем список строк-признаков, по которым однозначно можно определить чем занималось фоновое задание"""
     context_signs = (
-      "ВыполнитьЗаданиеОчереди", #  Работа воркеров очереди заданий
-      "РегистрСведений.ЗадачиБухгалтера.МодульМенеджера", # Фоновое задание обновление начального экрана в БП для руководителя
-      "Обработка.ГрупповоеПерепроведениеДокументов.МодульМенеджера", # Групповое перепроведение, в представлении не нуждается
-      "РегламентированнаяОтчетность.ВыполнитьПроверку", # Работа с регламентированной отчетностью
+      u"ВыполнитьЗаданиеОчереди", #  Работа воркеров очереди заданий
+      u"РегистрСведений.ЗадачиБухгалтера.МодульМенеджера", # Фоновое задание обновление начального экрана в БП для руководителя
+      u"Обработка.ГрупповоеПерепроведениеДокументов.МодульМенеджера", # Групповое перепроведение, в представлении не нуждается
+      u"РегламентированнаяОтчетность.ВыполнитьПроверку", # Работа с регламентированной отчетностью
+      u"БухгалтерскиеОтчетыВызовСервера.СформироватьОтчет", # Формирование отчетов
+      u"ПроверитьВебСервисомФНС" # проверка контрагентов
      )
     for sign in context_signs:
-        context_result[sign] = {}
+        context_result[sign] = {'count': 0,
+                                'dur': 0}
+    return context_signs
 
+
+def print_session(session):
+    print 'dur = ' + str(session['dur'])
+    pprint.pprint(session['types'])
+    for line in sorted(session['context_lines'].keys(),
+                       key=lambda line: session['context_lines'][line], reverse=True)[:11]:
+        print(str(session['context_lines'][line]) + " " + line)
 
 if __name__ == '__main__':
     context_result = {}
     context_signs = define_context_sign()
+    bad_dur = 0
 
     fd = open(sys.argv[1], 'rb')
     main_str = fd.read()
-    sessions = json.loads(main_str)
+    result = json.loads(main_str)
+    sessions = result['sessions']
     for session in sessions:
-        for line in sessions[session]['context_lines']:
+        flag = 0
+        for line in sessions[session]['context_lines'].keys():
+            if flag:
+                break
             for sign in context_signs:
-                if 
+                if line.find(sign) > -1:
+                    context_result[sign]['count'] += 1
+                    context_result[sign]['dur'] += sessions[session]['dur']
+                    flag = 1
+                    break
+        # Если не нашли ни одного события, то выводим информацию по сессии
+        if not flag:
+            bad_dur += sessions[session]['dur']
+            print_session(sessions[session])
+
+    # Вывожу результаты
+    print('\n\ntotal duration : {0}'.format(result['total_dur']))
+    print(bad_dur)
+    for res in context_result:
+        print("{0} dur {1} count {2} ".format(str(context_result[res]['dur']/result['total_dur']*100),
+                                              str(context_result[res]['dur']),
+                                              str(context_result[res]['count'])) + res)
+
     pass
 
+# total duration : 7929.80716
+# 1129.456284
+# 4.70548974863 dur 373.136263 count 8 РегламентированнаяОтчетность.ВыполнитьПроверку
+# 25.9092541791 dur 2054.553893 count 34 РегистрСведений.ЗадачиБухгалтера.МодульМенеджера
+# 4.52700805652 dur 358.983009 count 3 Обработка.ГрупповоеПерепроведениеДокументов.МодульМенеджера
+# 3.1964969877 dur 253.476047 count 41 БухгалтерскиеОтчетыВызовСервера.СформироватьОтчет
+# 27.7176027948 dur 2197.952451 count 105 ПроверитьВебСервисомФНС
+# 19.7009735732 dur 1562.249213 count 4 ВыполнитьЗаданиеОчереди
 
+# total duration : 23665.488344
+# 2502.398896
+# 5.10581110534 dur 1208.315132 count 18 РегламентированнаяОтчетность.ВыполнитьПроверку
+# 19.6105818673 dur 4640.939966 count 71 РегистрСведений.ЗадачиБухгалтера.МодульМенеджера
+# 14.5822989023 dur 3450.972247 count 13 Обработка.ГрупповоеПерепроведениеДокументов.МодульМенеджера
+# 4.39863507936 dur 1040.958472 count 117 БухгалтерскиеОтчетыВызовСервера.СформироватьОтчет
+# 31.5572694695 dur 7468.181928 count 374 ПроверитьВебСервисомФНС
+# 14.1713606508 dur 3353.721703 count 19 ВыполнитьЗаданиеОчереди
