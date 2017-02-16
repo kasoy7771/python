@@ -108,7 +108,6 @@ def process_event(event):
             sessions[SessionID]['context_lines'][line] += 1
 
 
-
 def analyze():
     """Функция анализирует количество уникальных сессий,
     понимает количество сессий,
@@ -158,6 +157,7 @@ def analyze():
         for line in sorted(sessions[session]['context_lines'].keys(), key=lambda line: sessions[session]['context_lines'][line], reverse=True)[:11]:
             print (str(sessions[session]['context_lines'][line]) + " " + line)
     pprint.pprint(types)
+
 
 if __name__ == '__main__':
 

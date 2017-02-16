@@ -26,16 +26,18 @@ import json
 def define_context_sign():
     """Определяем список строк-признаков, по которым однозначно можно определить чем занималось фоновое задание"""
     context_signs = (
-      u"ВыполнитьЗаданиеОчереди", #  Работа воркеров очереди заданий
+      u"ОбщийМодуль.ОчередьЗаданийСлужебный.Модуль", #  Работа воркеров очереди заданий
       u"РегистрСведений.ЗадачиБухгалтера.МодульМенеджера", # Фоновое задание обновление начального экрана в БП для руководителя
       u"Обработка.ГрупповоеПерепроведениеДокументов.МодульМенеджера", # Групповое перепроведение, в представлении не нуждается
       u"РегламентированнаяОтчетность.ВыполнитьПроверку", # Работа с регламентированной отчетностью
       u"БухгалтерскиеОтчетыВызовСервера.СформироватьОтчет", # Формирование отчетов
-      u"ПроверитьВебСервисомФНС" # проверка контрагентов
+      u"ПроверитьВебСервисомФНС", # проверка контрагентов
+      u"Обработка.ЗакрытиеМесяца.МодульМенеджера"
      )
     for sign in context_signs:
         context_result[sign] = {'count': 0,
-                                'dur': 0}
+                                'dur': 0,
+                                'event_types': {}}
     return context_signs
 
 
@@ -64,6 +66,11 @@ if __name__ == '__main__':
                 if line.find(sign) > -1:
                     context_result[sign]['count'] += 1
                     context_result[sign]['dur'] += sessions[session]['dur']
+                    for event_type in sessions[session]['types']:
+                        if event_type not in context_result[sign]['event_types'].keys():
+                            context_result[sign]['event_types'][event_type] = {'count': 0, 'dur': 0}
+                        context_result[sign]['event_types'][event_type]['count'] += sessions[session]['types'][event_type]['count']
+                        context_result[sign]['event_types'][event_type]['dur'] += sessions[session]['types'][event_type]['dur']
                     flag = 1
                     break
         # Если не нашли ни одного события, то выводим информацию по сессии
@@ -72,12 +79,18 @@ if __name__ == '__main__':
             print_session(sessions[session])
 
     # Вывожу результаты
-    print('\n\ntotal duration : {0}'.format(result['total_dur']))
-    print(bad_dur)
-    for res in context_result:
-        print("{0} dur {1} count {2} ".format(str(context_result[res]['dur']/result['total_dur']*100),
+    print('\n\ntotal duration : {0}s'.format(result['total_dur']))
+    print(str(bad_dur) + u" нераспределенное время")
+    for res in sorted(context_result.keys(), key=lambda res: context_result[res]['dur'], reverse=True):
+        print("{:.2%}; dur {}s; count {} ".format(context_result[res]['dur']/result['total_dur'],
                                               str(context_result[res]['dur']),
                                               str(context_result[res]['count'])) + res)
+        for event_type in context_result[res]['event_types']:
+            print("\t{}; dur {}s ({:.2%}); count {}".format(event_type,
+                            context_result[res]['event_types'][event_type]['dur'],
+                            context_result[res]['event_types'][event_type]['dur']/context_result[res]['dur'],
+                            context_result[res]['event_types'][event_type]['count']))
+        print("")
 
     pass
 
