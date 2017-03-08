@@ -6,8 +6,8 @@ CREATE DATABASE tcpdump;
 GRANT ALL PRIVILEGES ON DATABASE tcpdump to admin;
 3. Прописать имя юзера, имя бд, имя бд_сервера в config.py
 4. Готовим файлы снятые tcpdump
-for i in /mnt/tcpdump/*; do echo $i; tcpdump -S -r -tt $i > $i.1c.txt; done
-for i in /mnt/tcpdump/*; do echo $i; tcpdump -S -r -tt $i > $i.db.txt; done
+for i in /mnt/tcpdump/*; do echo $i; tcpdump -S -tt -r $i > $i.1c.txt; done
+for i in /mnt/tcpdump/*; do echo $i; tcpdump -S -tt -r $i > $i.db.txt; done
 5. Загрузить файлы в базу. для этого надо исползовать скрипт load_tcpdupm.py
 	Для дб:
 python ~/git/python/pg_interaction/tcpdump/load_tcpdump.py -n 39 -t db -f ~/git/python/pg_interaction/tcpdump/where_filename-20170307163203.dump_db.txt
