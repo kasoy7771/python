@@ -327,11 +327,24 @@ class Event(object):
                               int(self.date[14:]))
         pass
 
+    def get_str_event(self):
+        res = self.__get_str()
+        return res
+
     def print_event(self):
-        if self.str_event:
-            print(self.str_event)
-        else:
-            log('Event is not defiened')
+        res = self.__get_str()
+        print(res)
+
+    def __get_str(self):
+        res_list = []
+        res_list.append(self.type)
+        res_list.append(self.nesting_level)
+        for key, value  in self.properties.items():
+            res_list.append(key + '=' + value)
+        res = ','.join(res_list)
+        res = self.date + '-' + ',' + res
+        return res
+
 
     def get_property(self, name):
         if name in self.properties:
