@@ -46,8 +46,16 @@ def steam_from_globs(globs):
             fd.close()
 
 
+def check_filter(filter, event, filter_operation):
+    if not filter:
+        return False
+    if filter_operation == 'eq':
+        return filter not in event
+    else:
+        return filter in event
+
 # @profile
-def read_events_from_files(globs, filter=''):
+def read_events_from_files(globs, filter='', filter_operation=''):
     '''
     Функция из переданных глоб создает генератор цельных
     событий технологического журнала платформы 1С:Предприятие 8.3
@@ -69,11 +77,15 @@ def read_events_from_files(globs, filter=''):
             basename = os.path.basename(file)
             # Из имени файла получаем дату ТЖ
             file_date = basename[:8]
+            break_observe_file = False
 
             fd = open(file, 'rb')
             # Проходим по каждой строке из потока, чтобы сформировать из них цельные события
             for line in fd.xreadlines():
-
+                # Если в строке меньше десяти символов, то это пустой файл, его не надо смотреть
+                if len(line) < 10:
+                    break_observe_file = True
+                    break
                 # Если совпали с регуляркой, то собыите закончилось, можно отдавать
                 if new_line_regex.search(line[:30]):
                     # Но только не для первой строки
@@ -85,8 +97,8 @@ def read_events_from_files(globs, filter=''):
                             garb, line = re.split('\D+', line, 1)
                         event += line
                         continue
-
-                    if filter and filter not in event:
+                    # Проверяем фильтр
+                    if check_filter(filter, event, filter_operation):
                         event = ''
                     else:
                         yield (file_date + event)
@@ -96,8 +108,14 @@ def read_events_from_files(globs, filter=''):
                     event = ''
                 # Прибавляем строку, чтобы софрмировать цельное событие
                 event += line
+                
+            # Если выше пришел признак, что не надо обзревать файл, то скипаем его
+            if break_observe_file:
+                continue
+                
             # Возвращаем последнее событие
-            yield (file_date + event)
+            if not check_filter(filter, event, filter_operation):
+                yield (file_date + event)
 
 
 def read_events_from_steam(stream):
