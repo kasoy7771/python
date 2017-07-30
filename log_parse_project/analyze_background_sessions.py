@@ -5,7 +5,7 @@
 Скрипт предназначен для анализ сеансов.
 Доделать - впихнуть пример использования.
 
-На выходе получаем список экземпляров класса сеансов.
+На выходе скрипт выводит информацию о сеансах. Дату начала, дату окончания, сколько ро.
 
 Что мы должны сделать:
 На вход мы должны передать список файлов глобом
@@ -58,7 +58,13 @@ def parse_params():
 
 
 def process_event(event):
-    """Пока что функция определяет для события начальную и конечную дату сессии
+    """Функция определяет для события начальную и конечную дату сессии,
+	заполняет сколько сессия провела в каждом из типов событий (sdbl, call и т.д.),
+	распарсивает контекст, в котором работает сессия.
+		Как распарсиавает контекст. Она берет контекст, делит его по строкам
+		добавляет каждую строку в словарь строк контекстов
+		на выходе мы получаем для каждой сессии сколько раз встречалась каждая из строк контекста.
+		В дальнейшем это позволит понять чем занималась сессия.
     Смущает то, что оказывается номер сессии может быть не уникаьлным, но посмотрим"""
 
     # Получаю номер сессии
@@ -90,7 +96,7 @@ def process_event(event):
     else:
         logsparseLib.update_dur_count_dict(sessions[SessionID]['types'], event)
 
-    # Добавляем информацию по дилетльности типов событий по всеми сессиям
+    # Добавляем информацию по длиетльности типов событий по всеми сессиям
     logsparseLib.define_dur_count_dict(types, event)
 
     # Анализируем контекст
@@ -98,7 +104,7 @@ def process_event(event):
     context = event.get_property('Context')
     if context:
         # Избавляемся от апострофов
-        if context[0] == "'":
+        if context[0] == "'" or context[0] == '"':
             context = context[1:-1]
         for line in context.splitlines():
             line = line.strip()
@@ -111,7 +117,7 @@ def process_event(event):
 def analyze():
     """Функция анализирует количество уникальных сессий,
     понимает количество сессий,
-    для каждой сесси вычисляет время работы : дата последнего события - дата первого события"""
+    для каждой сессии вычисляет время работы : дата последнего события - дата первого события"""
     total_dur = 0
     for session in sessions:
         dur = sessions[session]['end'] - sessions[session]['begin']
@@ -169,8 +175,8 @@ if __name__ == '__main__':
     sessions = {}
     types = {}
 
-    # Получаю строковый генератор событий из библиотеки передав список параметров - глоб
-    str_events = logsparseLib.read_events_from_files(params.globs, filter='t:applicationName=BackgroundJob')
+    # Получаю строковый генератор событий из библиотеки передав список файлов - глоб
+    str_events = logsparseLib.read_events_from_files(params.globs, filter='t:applicationName=BackgroundJob', filter_operation='eq')
     i = 1
     for str_event in str_events:
         # print(str_event+'\n')
@@ -180,7 +186,9 @@ if __name__ == '__main__':
 
         process_event(event)
         i += 1
+        if i == 12673:
+            a=1
 
     analyze()
 
-    logsparseLib.log(str(time.time() - begin), params=params)
+    logsparseLib.log(str(time.time() - begin) + " " + str(i), params=params)

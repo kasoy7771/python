@@ -78,14 +78,14 @@ def read_events_from_files(globs, filter='', filter_operation=''):
             # Из имени файла получаем дату ТЖ
             file_date = basename[:8]
             break_observe_file = False
-
+            
+            # Проверяем не пустой ли файл
+            if file_empty(file):
+                continue                
+                
             fd = open(file, 'rb')
             # Проходим по каждой строке из потока, чтобы сформировать из них цельные события
             for line in fd.xreadlines():
-                # Если в строке меньше десяти символов, то это пустой файл, его не надо смотреть
-                if len(line) < 10:
-                    break_observe_file = True
-                    break
                 # Если совпали с регуляркой, то собыите закончилось, можно отдавать
                 if new_line_regex.search(line[:30]):
                     # Но только не для первой строки
@@ -363,7 +363,6 @@ class Event(object):
         res = self.date + '-' + ',' + res
         return res
 
-
     def get_property(self, name):
         if name in self.properties:
             return self.properties[name]
@@ -420,8 +419,8 @@ def define_dur_count_dict(dir_count_dict, event):
 
 def update_dur_count_dict(dir_count_dict, event):
     """
-    Функция предназначается для суммирования экземпряров словаря для подсчета
-    количества и суммарной длительности событий определенного вида.
+    Функция предназначается для добавления длительности события из event
+	в словарь dir_count_dict, в котором хранится суммарная длительность и количество в разрезе событий.
     Фунеция принимает на вход словарь и экземпляр класса event.
     Функция добавляет к значениям словаря dir_count_dict[] занчения из event
     """
@@ -429,6 +428,10 @@ def update_dur_count_dict(dir_count_dict, event):
     dir_count_dict[event.type]['count'] += 1
 
 
+def file_empty(file):
+    file_size = os.path.getsize(file)
+    return file_size <= 3
+        
 
 # Чтобы распарсить строку события в объект событие нужно учитывать следующие возможные варианты:
 # 1. тип_события=событие

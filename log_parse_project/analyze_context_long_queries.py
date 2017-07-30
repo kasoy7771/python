@@ -44,11 +44,12 @@ def process_event(event):
     
 def print_result():
     for hash_context in sorted(contexts.keys(), key=lambda hash_context: contexts[hash_context]['dur_sec'], reverse=True):
-        print("avg dur {:+f}s; dur {}s; count {}; hash {} \ncontext {}".format(contexts[hash_context]['dur_sec']/contexts[hash_context]['count'],
+        print("avg dur {:+f}s; dur {}s; count {}; hash {} \ncontext\t{} \ntext\t {}".format(contexts[hash_context]['dur_sec']/contexts[hash_context]['count'],
                                               str(contexts[hash_context]['dur_sec']),
                                               str(contexts[hash_context]['count']), 
                                               hash_context,
-                                              contexts[hash_context]['context']) + '\n\n\n')
+                                              contexts[hash_context]['context'],
+											  contexts[hash_context]['texts'][0] + '\n\n\n'))
     
 
 if __name__ == '__main__':
