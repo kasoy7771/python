@@ -318,8 +318,8 @@ def print_result():
 		print ('-' * 50)
 		print ('-' * 50)
 		print field
-		print 'bytes = ' + str(result[field]['bytes'])
-		print 'count = ' + str(result[field]['count'])
+		print 'bytes = ' + str(result[field]['bytes']) + str(result[field]['bytes']/sum_bytes) + '%'
+		print 'count = ' + str(result[field]['count']) + str(result[field]['count']/sum_count) + '%'
 		
 	print ('-' * 50)
 	print ('-' * 50)
