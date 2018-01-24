@@ -4,6 +4,7 @@ from glob import glob
 import os.path
 from datetime import datetime
 import re
+import pprint
 import parser
 
 class LazyReader(object):
@@ -229,6 +230,7 @@ class Dictionary(object):
 		self.apps = {}
 		self.events = {}
 		self.seps = {}
+		self.metadata = {}
 
 		#for entry in read_file(LazyReader(file_name)):
 		for entry in read_file(file_name):
@@ -241,6 +243,8 @@ class Dictionary(object):
 				self.apps[entry[2]] = entry[1].decode('utf')
 			elif entry[0] == '4': #событие
 				self.events[entry[2]] = entry[1].decode('utf')
+			elif entry[0] == '5': #метаданные
+				self.metadata[entry[3]] = entry[2].decode('utf')
 			elif entry[0] == '10' and entry[2] == '2': #разделитель
 				self.seps[entry[3]] = entry[1][1]
 			else:
@@ -260,7 +264,8 @@ class Event(object):
 		rez.append("Kind="+self.kind)
 		rez.append("Event="+self.event)
 		rez.append("Session="+self.sessionId)
-		rez.append("Bytes="+self.bytes)
+		rez.append("Metadata="+self.metadata)
+		rez.append("Bytes="+str(self.bytes))
 		comment = self.comment.replace("\r\n","|")
 		comment = comment.replace("\n","|")
 		rez.append("Comment="+comment)
@@ -280,6 +285,7 @@ def file_parse(dic, file_name):
 		event.event = dic.events.get(entry[7], '')
 		event.kind = entry[8]
 		event.comment = entry[9].decode('utf')
+		event.metadata = dic.metadata.get(entry[10], '')
 		event.sessionId = entry[-3]
 		event.applicationId = dic.seps.get(entry[-1][-1], '0')
 		event.bytes = event_len
@@ -351,9 +357,9 @@ def process_events(dic_file, files):
 
 if __name__ == '__main__':
 	import sys
-	#show_events(sys.argv[1], sys.argv[2:])
+	show_events(sys.argv[1], sys.argv[2:])
 	result = {}
 	sum_bytes = 0
 	sum_count = 0
-	process_events(sys.argv[1], sys.argv[2:])
-	print_result()
+	#process_events(sys.argv[1], sys.argv[2:])
+	#print_result()
