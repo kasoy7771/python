@@ -55,7 +55,7 @@ def check_filter(filter, event, filter_operation):
         return filter in event
 
 # @profile
-def read_events_from_files(globs, filter='', filter_operation=''):
+def read_events_from_files(globs, filter='', filter_operation='', params=None):
     '''
     Функция из переданных глоб создает генератор цельных
     событий технологического журнала платформы 1С:Предприятие 8.3
@@ -78,6 +78,9 @@ def read_events_from_files(globs, filter='', filter_operation=''):
             # Из имени файла получаем дату ТЖ
             file_date = basename[:8]
             break_observe_file = False
+
+            if params and params.verbose:
+                print(file)
             
             # Проверяем не пустой ли файл
             if file_empty(file):
@@ -173,7 +176,12 @@ def read_events_from_steam(stream):
 
 class Event(object):
     def __init__(self, str_event):
-        self.parse2(str_event)
+        if len(str_event) < 100000:
+            self.parse2(str_event)
+        else:
+            self.str_event = str_event
+            self.parse()   
+        
         self.def_date()
 
     #   @profile
@@ -262,7 +270,7 @@ class Event(object):
             if s == '-':
                 i += 1
                 break
-            self.date += (s if s.isdigit() else '')
+            self.date += (s if s.isdigit() or '.' or ':' else '')
             i += 1
 
         # Определяем длительность
@@ -340,9 +348,12 @@ class Event(object):
     def def_date(self):
         #time.struct_time(tm_year=2017, tm_mon=2, tm_mday=2, tm_hour=21, tm_min=52, tm_sec=20, tm_wday=3, tm_yday=33,
         #                 tm_isdst=0)
+        #print(self.date )
+        self.date = re.sub(r'[^\d\:\.]', '', self.date)
         self.datetime = datetime.datetime(2000+int(self.date[0:2]), int(self.date[2:4]), int(self.date[4:6]),
                               int(self.date[6:8]), int(self.date[8:10]), int(self.date[11:13]),
                               int(self.date[14:]))
+        self.microsec = int(self.date[14:])
         pass
 
     def get_str_event(self):

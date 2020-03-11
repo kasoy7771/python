@@ -80,7 +80,7 @@ if __name__ == '__main__':
     types = {}
 
     # Получаю строковый генератор событий из библиотеки передав список параметров - глоб
-    str_events = logsparseLib.read_events_from_files(params.globs, filter='')
+    str_events = logsparseLib.read_events_from_files(params.globs, filter_operation='')
     i = 1
     last_date = ''
     diff = 0
